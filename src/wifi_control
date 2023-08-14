@@ -10,8 +10,6 @@ in3 = 16 // pin 36
 in4 = 20 // pin 38
 enB = 21 // pin 40
 
-temp1=1
-
 GPIO.setmode(GPIO.BCM)
 
 GPIO.setup(in1,GPIO.OUT)
@@ -33,45 +31,29 @@ p.start(7)
 q.start(21) // what parameter is this?
 print("\n")
 print("The default speed & direction of both motors is LOW & Forward.....")
-print("g-go s-stop f-forward b-backward l-left r-right e-exit")
+print("s-stop f-forward b-backward l-left r-right e-exit")
 print("\n")    
 
 while(1):
 
     x=raw_input()
-    
-    if x=='g':
-        print("Go")
-        if(temp1==1):
-         GPIO.output(in1,GPIO.HIGH)
-         GPIO.output(in2,GPIO.LOW)
-         print("forward")
-         x='z'
-        else:
-         GPIO.output(in1,GPIO.LOW)
-         GPIO.output(in2,GPIO.HIGH)
-         print("backward")
-         x='z'
-
 
     elif x=='s':
         print("Stop")
         GPIO.output(in1,GPIO.LOW)
         GPIO.output(in2,GPIO.LOW)
-        x='z'
+        x='z' // what is this for?
 
     elif x=='f':
         print("Forward")
         GPIO.output(in1,GPIO.HIGH)
         GPIO.output(in2,GPIO.LOW)
-        temp1=1
         x='z'
 
     elif x=='b':
         print("Backward")
         GPIO.output(in1,GPIO.LOW)
         GPIO.output(in2,GPIO.HIGH)
-        temp1=0
         x='z'
 
     elif x=='l':
@@ -88,7 +70,6 @@ while(1):
         print("high")
         p.ChangeDutyCycle(75)
         x='z'
-     
     
     elif x=='e':
         GPIO.cleanup()
