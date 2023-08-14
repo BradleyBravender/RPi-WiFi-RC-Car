@@ -1,3 +1,4 @@
+// adapted from https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/
 import RPi.GPIO as GPIO          
 from time import sleep
 
@@ -39,8 +40,8 @@ while(1):
 
     x=raw_input()
     
-    if x=='r':
-        print("run")
+    if x=='g':
+        print("Go")
         if(temp1==1):
          GPIO.output(in1,GPIO.HIGH)
          GPIO.output(in2,GPIO.LOW)
@@ -54,20 +55,20 @@ while(1):
 
 
     elif x=='s':
-        print("stop")
+        print("Stop")
         GPIO.output(in1,GPIO.LOW)
         GPIO.output(in2,GPIO.LOW)
         x='z'
 
     elif x=='f':
-        print("forward")
+        print("Forward")
         GPIO.output(in1,GPIO.HIGH)
         GPIO.output(in2,GPIO.LOW)
         temp1=1
         x='z'
 
     elif x=='b':
-        print("backward")
+        print("Backward")
         GPIO.output(in1,GPIO.LOW)
         GPIO.output(in2,GPIO.HIGH)
         temp1=0
