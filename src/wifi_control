@@ -2,33 +2,33 @@
 import RPi.GPIO as GPIO          
 from time import sleep
 
-in1 = 25 // pin 22 
-in2 = 8 // pin 24
+drive_1 = 25 // pin 22 
+drive_2 = 8 // pin 24
 enA = 7 // pin 26
 
-in3 = 16 // pin 36
-in4 = 20 // pin 38
+steer_1 = 16 // pin 36
+steer_2 = 20 // pin 38
 enB = 21 // pin 40
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(in1,GPIO.OUT)
-GPIO.setup(in2,GPIO.OUT)
+GPIO.setup(drive_1,GPIO.OUT)
+GPIO.setup(drive_2,GPIO.OUT)
 GPIO.setup(enA,GPIO.OUT)
 
-GPIO.setup(in3,GPIO.OUT)
-GPIO.setup(in4,GPIO.OUT)
+GPIO.setup(steer_1,GPIO.OUT)
+GPIO.setup(steer_2,GPIO.OUT)
 GPIO.setup(enB,GPIO.OUT)
 
-GPIO.output(in1,GPIO.LOW)
-GPIO.output(in2,GPIO.LOW)
-GPIO.output(in3,GPIO.LOW)
-GPIO.output(in4,GPIO.LOW)
+GPIO.output(drive_1,GPIO.LOW) // initially turning both motors off
+GPIO.output(drive_2,GPIO.LOW)
+GPIO.output(steer_1,GPIO.LOW)
+GPIO.output(steer_2,GPIO.LOW)
 
-p=GPIO.PWM(enA,1000)
-q=GPIO.PWM(enB,1000) // what is the '1000' parameter?
-p.start(7)
-q.start(21) // what parameter is this?
+motor_1=GPIO.PWM(enA,1000) // '1000' hertz duty cycle
+motor_2=GPIO.PWM(enB,1000) 
+motor_1.start(26)
+motor_2.start(40) 
 print("\n")
 print("The default speed & direction of both motors is LOW & Forward.....")
 print("s-stop f-forward b-backward l-left r-right e-exit")
@@ -38,38 +38,41 @@ while(1):
 
     x=raw_input()
 
-    elif x=='s':
+    if x=='s':
         print("Stop")
-        GPIO.output(in1,GPIO.LOW)
-        GPIO.output(in2,GPIO.LOW)
-        x='z' // what is this for?
+        GPIO.output(drive_1,GPIO.LOW)
+        GPIO.output(drive_2,GPIO.LOW)
+        GPIO.output(steer_1,GPIO.LOW)
+        GPIO.output(steer_2,GPIO.LOW)
+        x='z' // set the x to a value that will not trigger any conditional statement in the next iteration of the loop
 
     elif x=='f':
         print("Forward")
-        GPIO.output(in1,GPIO.HIGH)
-        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(drive_1,GPIO.HIGH)
+        GPIO.output(drive_2,GPIO.LOW)
+        GPIO.output(steer_1,GPIO.LOW)
+        GPIO.output(steer_2,GPIO.LOW)
         x='z'
 
     elif x=='b':
         print("Backward")
-        GPIO.output(in1,GPIO.LOW)
-        GPIO.output(in2,GPIO.HIGH)
+        GPIO.output(drive_1,GPIO.LOW)
+        GPIO.output(drive_2,GPIO.HIGH)
+        GPIO.output(steer_1,GPIO.LOW)
+        GPIO.output(steer_2,GPIO.LOW)
         x='z'
 
     elif x=='l':
-        print("low")
-        p.ChangeDutyCycle(25)
+        print("Left")
+        GPIO.output(steer_1,GPIO.HIGH)
+        GPIO.output(steer_2,GPIO.LOW)
         x='z'
 
-    elif x=='m':
-        print("medium")
-        p.ChangeDutyCycle(50)
-        x='z'
-
-    elif x=='h':
-        print("high")
-        p.ChangeDutyCycle(75)
-        x='z'
+    elif x=='r':
+        print("Right")
+        GPIO.output(steer_1,GPIO.LOW)
+        GPIO.output(steer_2,GPIO.HIGH)
+        x='z'   
     
     elif x=='e':
         GPIO.cleanup()
