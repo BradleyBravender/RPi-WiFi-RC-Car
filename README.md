@@ -1,2 +1,2 @@
 # WiFi_RC_Car
-This project uses a Raspberry Pi's GPIO pins and PWM to enable an existing RC car chassis to have a new life. 
+I needed a remote controlled car to train an object detection model on in a preceding project. I have tqo identical RC car's with burnt out batteries, so one was designated as the computer vision enabled car, (the 'pursuer'), and the other car as the remote controlled car (the one getting pursued). This project is my transformation of the remote controlled chassis of the pursued car into a car remotely controlled over SSH by a Raspberry Pi 2.
