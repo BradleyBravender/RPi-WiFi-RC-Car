@@ -7,7 +7,7 @@ The RC car has two motors: one for steering, and one for driving. Thus, keyboard
 
 Currently, the keys used are as follows:
 
-'l' for left
+'l' for left /n
 'r' for right
 'f' for forward
 'b' for backward
