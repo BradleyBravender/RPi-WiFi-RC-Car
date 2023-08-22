@@ -7,10 +7,13 @@ The RC car has two motors: one for steering, and one for driving. Thus, keyboard
 
 Currently, the keys used are as follows:
 
-'l' for left /n
-'r' for right
-'f' for forward
-'b' for backward
-'s' to stop both motors
-'e' to exit the script
+'l' for left.
+'s' for straight.
+'r' for right.
+
+'f' for forward.
+'b' for backward.
+
+'h' to halt (stop) both motors.
+'e' to exit the script and clean up the GPIO pins
 
