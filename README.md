@@ -1,19 +1,23 @@
-# WiFi-RC-Car
-I am repurposing an remote control (RC) car to deploy TensorFlow Lite so that it can follow another vehicle via computer vision. This project is that other vehicle.
+# RPi-WiFi-RC-Car
+I repurposed a remote control (RC) car to deploy TensorFlow Lite so that it can follow another vehicle via computer vision. This project is that other vehicle.
 
-This project is my transformation of the remote controlled chassis of the pursued car into a car remotely controlled over SSH by a Raspberry Pi 2. The initial python script was adpated from https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for the sake of time, but then modified to meet the needs of this project.
+To that end, I transformed an off-road RC car chassis so that it could be controlled remotely over SSH by a Raspberry Pi 2. The initial python script was adpated from https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for the sake of time, but then modified and refactored to meet the needs of this project.
 
 The RC car has two motors: one for steering, and one for driving. Thus, keyboard commands on the client computer must be able to control the forward/backward and left/right rotations for motor_1 and motor_2 respectively.
 
-Currently, the keys used are as follows:
+Using the arrow-key keypad to the right of most keyboards for intuition's sake, the keys used are as follows:
 
-'l' for left.
-'s' for straight.
-'r' for right.
+'4' for left.
 
-'f' for forward.
-'b' for backward.
+'5' for straight.
 
-'h' to halt (stop) both motors.
-'e' to exit the script and clean up the GPIO pins
+'6' for right.
+
+'8' for forward.
+
+'2' for backward.
+
+'e' to exit the script and clean up the GPIO pins.
+
+And any other key to stop the drive motors.
 
